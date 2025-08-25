@@ -1,0 +1,22 @@
+#https://www.kaggle.com/code/jhoward/linear-model-and-neural-net-from-scratch
+import torch, numpy as np, pandas as pd
+np.set_printoptions(linewidth=140)
+torch.set_printoptions(linewidth=140, sci_mode=False, edgeitems=7)
+pd.set_option('display.width', 140)
+# limit output in single line
+
+df = pd.read_csv(path/'train.csv')
+df
+df.isna().sum()
+# .isna() find the NaN data and .sum() shows the total number 
+
+modes = df.mode().iloc[0]
+modes
+# .mode() shows the most common number and .iloc[] outputs specific location data 
+# for missing data, we could add a column called whether data is missing to let the model know, which may improve the model
+
+df.fillna(modes, inplace=True)
+import numpy as np
+
+df.describe(include=(np.number))
+# .describe() shows a quick conclusion of data, including count, mean, std, and value from the  box plot 
